@@ -1,18 +1,24 @@
-//
-//  FinancialViewModel.swift
-//  CluckChecker
-//
-//  Created by Адам Табиев on 26.07.2025.
-//
+import Foundation
+import Combine
 
-import SwiftUI
-
-struct FinancialViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class FinancialViewModel: ObservableObject {
+    @Published private(set) var financials: [Financial] = []
+    private let userDefaultsService = UserDefaultsService.shared
+    
+    init() {
+        loadFinancials()
     }
-}
-
-#Preview {
-    FinancialViewModel()
+    
+    /// Добавляет новую финансовую запись
+    func addFinancial(price: Int, sold: Int) {
+        let sum = price * sold
+        let entry = Financial(sum: sum, date: Date())
+        userDefaultsService.addFinancialEntry(entry)
+        loadFinancials()
+    }
+    
+    /// Загружает все финансовые записи
+    func loadFinancials() {
+        financials = userDefaultsService.getAllFinancialEntries()
+    }
 }
