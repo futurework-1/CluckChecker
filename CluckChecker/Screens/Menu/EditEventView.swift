@@ -30,6 +30,7 @@ struct EditEventView: View {
                             
                             Image(event.type.iconName)
                                 .resizable()
+                                .scaledToFill()
                                 .frame(width: 48, height: 48)
                         }
                         .padding()

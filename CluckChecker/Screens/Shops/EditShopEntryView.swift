@@ -68,6 +68,7 @@ struct EditShopEntryView: View {
                                         
                                         Image("eggImage")
                                             .resizable()
+                                            .scaledToFill()
                                             .frame(width: 28, height: 28)
                                     }
                                     .padding()
@@ -99,6 +100,7 @@ struct EditShopEntryView: View {
                                         
                                         Image("eggImage")
                                             .resizable()
+                                            .scaledToFill()
                                             .frame(width: 28, height: 28)
                                     }
                                     .padding()
@@ -139,6 +141,7 @@ struct EditShopEntryView: View {
                                         
                                         Image("henImage")
                                             .resizable()
+                                            .scaledToFill()
                                             .frame(width: 28, height: 28)
                                     }
                                     .padding()
@@ -170,6 +173,7 @@ struct EditShopEntryView: View {
                                         
                                         Image("henImage")
                                             .resizable()
+                                            .scaledToFill()
                                             .frame(width: 28, height: 28)
                                     }
                                     .padding()

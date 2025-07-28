@@ -122,6 +122,7 @@ struct ShopTypeDetailView: View {
                     HStack(spacing: 8) {
                         Image("eggImage")
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 20, height: 20)
                         
                         Text("\(entry.availableEggs)")
@@ -134,6 +135,7 @@ struct ShopTypeDetailView: View {
                     HStack(spacing: 8) {
                         Image("henImage")
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 20, height: 20)
                         
                         Text("\(entry.availableChickens)")

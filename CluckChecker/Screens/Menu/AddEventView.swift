@@ -24,6 +24,7 @@ struct AddEventView: View {
                             VStack(spacing: 4) {
                                 Image(eventType.iconName)
                                     .resizable()
+                                    .scaledToFill()
                                     .frame(width: 32, height: 32)
                                 
                                 Text(eventType.title)
@@ -50,6 +51,7 @@ struct AddEventView: View {
                         
                         Image(selectedEventType.iconName)
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 48, height: 48)
                     }
                     .padding()

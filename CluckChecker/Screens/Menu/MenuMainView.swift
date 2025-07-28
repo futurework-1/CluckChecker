@@ -200,6 +200,7 @@ struct MenuMainView: View {
             HStack(alignment: .center, spacing: 8) {
                 Image(event.type.iconName)
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 40, height: 40)
                 
                 Text(event.type.title)

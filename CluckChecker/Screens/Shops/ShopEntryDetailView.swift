@@ -144,6 +144,7 @@ struct ShopEntryDetailView: View {
                         
                         Image(iconName)
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 24, height: 24)
                     }
                     
@@ -167,6 +168,7 @@ struct ShopEntryDetailView: View {
                         
                         Image(iconName)
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 24, height: 24)
                     }
                 }

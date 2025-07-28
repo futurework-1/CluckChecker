@@ -106,6 +106,7 @@ struct ShopsMainView: View {
                     HStack(spacing: 8) {
                         Image("eggImage")
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 20, height: 20)
                         
                         Text("\(viewModel.getStats(for: shopType).totalAvailableEggs)")
@@ -116,6 +117,7 @@ struct ShopsMainView: View {
                     HStack(spacing: 8) {
                         Image("henImage")
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 20, height: 20)
                         
                         Text("\(viewModel.getStats(for: shopType).totalAvailableChickens)")
