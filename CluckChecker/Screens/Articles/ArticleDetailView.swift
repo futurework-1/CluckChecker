@@ -34,8 +34,8 @@ struct ArticleDetailView: View {
                 }
                 .navigationBarBackButtonHidden()
                 .padding(.horizontal)
-                .padding(.top, 88)
-                .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 40)
+                .padding(.top, 100)
+                .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 80)
                 .foregroundStyle(.customYellow)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {

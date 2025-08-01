@@ -66,8 +66,9 @@ struct AddNotificationView: View {
                 .disabled(name.isEmpty)
                 .opacity(name.isEmpty ? 0.5 : 1.0)
             }
+            .padding(.top, 20)
             .padding(.horizontal, 32)
-            .padding(.bottom, isNameFieldFocused ? 50 : (AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 40))
+            .padding(.bottom, isNameFieldFocused ? 90 : (AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 80))
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()

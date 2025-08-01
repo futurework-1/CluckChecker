@@ -71,10 +71,12 @@ struct AddEventView: View {
                         .frame(height: 52)
                         .background(RoundedRectangle(cornerRadius: 20).fill(.customYellow))
                 }
+                .padding(.bottom, 40)
                 .disabled(count.isEmpty)
                 .opacity(count.isEmpty ? 0.5 : 1.0)
             }
             .padding(.horizontal, 32)
+            .padding(.top, 30)
             .padding(.bottom, isCountFieldFocused ? 50 : (AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 40))
         }
         .navigationBarTitleDisplayMode(.inline)

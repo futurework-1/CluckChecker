@@ -42,7 +42,8 @@ struct ShopsMainView: View {
                 .foregroundStyle(.customYellow)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 .padding(.horizontal, 32)
-                .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 64)
+                .padding(.top, 20)
+                .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 114)
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {

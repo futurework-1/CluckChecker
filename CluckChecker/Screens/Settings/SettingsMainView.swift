@@ -143,7 +143,8 @@ struct SettingsMainView: View {
                     Spacer()
                 }
                 .padding(.horizontal, 24)
-                .padding(.top, 80)
+                .padding(.top, 100)
+                
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 .navigationDestination(for: SettingsScreen.self) { screen in
                     switch screen {

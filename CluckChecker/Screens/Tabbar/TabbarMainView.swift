@@ -29,8 +29,8 @@ struct TabbarMainView: View {
                     Spacer()
                     TabbarBottomView(selectedTab: $selectedTab)
                 }
-                .padding(.bottom, AppConfig.tabbarBottomPadding)
-//                .padding(.horizontal, AppConfig.tabbarHorizontalPadding)
+                .padding(.bottom, AppConfig.adaptiveTabbarBottomPadding)
+                //.padding(.bottom, AppConfig.tabbarBottomPadding)
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)

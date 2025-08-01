@@ -43,6 +43,7 @@ struct MenuMainView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 .padding(.horizontal, 32)
                 .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 32)
+                .padding(.top, 20)
                 
                 // Календарь поверх всего контента
                 if viewModel.isDatePickerVisible {
@@ -264,6 +265,7 @@ struct MenuMainView: View {
                         }
                     }
                 }
+                .padding(.bottom, 40)
             }
         }
     }

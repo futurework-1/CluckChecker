@@ -51,7 +51,7 @@ struct UnitView: View {
                 
             }
             .padding(.horizontal, 24)
-            .padding(.top, 80)
+            .padding(.top, 120)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .toolbar {
                 // Заголовок

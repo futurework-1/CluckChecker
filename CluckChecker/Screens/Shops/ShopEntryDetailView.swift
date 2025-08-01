@@ -67,6 +67,7 @@ struct ShopEntryDetailView: View {
                             .background(RoundedRectangle(cornerRadius: 20).fill(.customYellow))
                     }
                 }
+                .padding(.top, 20)
                 .padding(.horizontal, 32)
                 .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 40)
             } else {

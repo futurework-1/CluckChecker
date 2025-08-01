@@ -69,9 +69,11 @@ struct ShopTypeDetailView: View {
                         .background(RoundedRectangle(cornerRadius: 20).fill(.customYellow))
                 }
                 .padding(.horizontal, 32)
+                .padding(.bottom, 40)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 40)
+            .padding(.top, 20)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()

@@ -13,51 +13,54 @@ struct ArticlesMainView: View {
             ZStack(alignment: .center) {
                 MainBGView()
                 
-                VStack(alignment: .center, spacing: 0) {
-                    Spacer()
-                    
-                    // Первый блок
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Spring Care")
-                            .font(.customFont(font: .semiBold, size: 12))
-                            .opacity(0.5)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                ScrollView {
+                    VStack(alignment: .center, spacing: 0) {
+                        Spacer()
                         
-                        Text("Increase protein in the diet to help hens recover after winter. Clean the coop thoroughly, check for parasites, and start introducing fresh greens")
-                            .font(.customFont(font: .semiBold, size: 15))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 20).fill(.customBraun))
-                    .padding(.bottom, 24)
-                    
-                    // Статьи
-                    ForEach(Array(viewModel.articles.enumerated()), id: \ .element.title) { index, article in
-                        HStack(alignment: .center, spacing: 0) {
-                            Text(article.title)
+                        // Первый блок
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Spring Care")
+                                .font(.customFont(font: .semiBold, size: 12))
+                                .opacity(0.5)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            Text("Increase protein in the diet to help hens recover after winter. Clean the coop thoroughly, check for parasites, and start introducing fresh greens")
                                 .font(.customFont(font: .semiBold, size: 15))
-                            
-                            Spacer()
-                            
-                            Image(.forward)
-                                .padding(.leading, 20)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 20).fill(.customBraun))
-                        .padding(.bottom, 14)
-                        .onTapGesture {
-                            print("Selected article: \(article.title)")
-                            viewModel.selectArticle(at: index)
-                            appRouter.articlesRoute.append(.detail)
+                        .padding(.bottom, 24)
+                        
+                        // Статьи
+                        ForEach(Array(viewModel.articles.enumerated()), id: \ .element.title) { index, article in
+                            HStack(alignment: .center, spacing: 0) {
+                                Text(article.title)
+                                    .font(.customFont(font: .semiBold, size: 15))
+                                
+                                Spacer()
+                                
+                                Image(.forward)
+                                    .padding(.leading, 20)
+                            }
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 20).fill(.customBraun))
+                            .padding(.bottom, 14)
+                            .onTapGesture {
+                                print("Selected article: \(article.title)")
+                                viewModel.selectArticle(at: index)
+                                appRouter.articlesRoute.append(.detail)
+                            }
                         }
+                        
+                        Spacer()
                     }
-                    
-                    Spacer()
+                    .foregroundStyle(.customYellow)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .padding(.horizontal, 14)
+                    .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 20)
                 }
-                .foregroundStyle(.customYellow)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .padding(.horizontal, 14)
-                .padding(.bottom, AppConfig.tabbarBottomPadding + AppConfig.tabbarHeight + 20)
+                .padding(.top, 60)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Articles and advice")

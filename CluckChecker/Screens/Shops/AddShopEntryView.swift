@@ -246,6 +246,7 @@ struct AddShopEntryView: View {
                 .padding(.horizontal, 32)
                 .padding(.bottom, getFocusedPadding())
             }
+            .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
