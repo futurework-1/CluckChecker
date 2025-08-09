@@ -48,12 +48,16 @@ struct WebView: UIViewRepresentable {
 }
 
 struct SettingsMainView: View {
+    
+    @AppStorage("isNotificationEnable") var isNotificationEnable: Bool = true
+    
     /// Роутер для навигации
     @EnvironmentObject private var appRouter: AppRouter
     /// Настройка таббара
     @EnvironmentObject private var tabbarService: TabbarService
     
     @State private var toggl = true
+    @State private var isShowPushAlert = false
     
     /// Переменные для WebView
     @State private var showWebView = false
@@ -107,6 +111,7 @@ struct SettingsMainView: View {
                             .font(.customFont(font: .semiBold, size: 20))
                         Spacer()
                         Toggle(isOn: $toggl) {
+                            
                         }
                         .toggleStyle(SwitchToggleStyle(tint: .customYellow))
                     }
@@ -177,8 +182,49 @@ struct SettingsMainView: View {
                     }
                 }
             }
+            .alert(LocalPushError.notAuthorized.errorDescription ?? "", isPresented: $isShowPushAlert) {
+                Button("Yes") {
+                    openAppSettings()
+                }
+                
+                Button("No") {}
+            } message: {
+                Text("Open settings?")
+            }
+            .onAppear {
+                Task {
+                    let result = try? await LocalPushService.shared.requestAuthorization()
+                    toggl = (result ?? false) == true && isNotificationEnable
+                }
+            }
+            .onChange(of: toggl) { isOn in
+                if isOn {
+                    Task {
+                        let status = await LocalPushService.shared.currentAuthorizationStatus()
+                        
+                        switch status {
+                            case .authorized:
+                                isNotificationEnable = true
+                                try? await LocalPushService.shared.createDailyNoonReminder()
+                            default:
+                                isShowPushAlert.toggle()
+                                toggl = false
+                        }
+                    }
+                } else {
+                    isNotificationEnable = false
+                    LocalPushService.shared.removeDailyNoonReminder()
+                }
+            }
         }
         .navigationBarBackButtonHidden()
+    }
+    
+    private func openAppSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingsURL) {
+            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+        }
     }
 }
 
