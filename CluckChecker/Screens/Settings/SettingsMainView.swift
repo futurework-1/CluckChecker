@@ -7,8 +7,17 @@ enum WebViewType {
     
     var title: String {
         switch self {
-        case .privacyPolicy: return "Privacy Policy"
-        case .aboutDeveloper: return "About the Developer"
+            case .privacyPolicy: return "Privacy Policy"
+            case .aboutDeveloper: return "About the Developer"
+        }
+    }
+    
+    var urlString: String {
+        switch self {
+            case .privacyPolicy:
+                "https://sites.google.com/view/cluck-checker/privacy-policy"
+            case .aboutDeveloper:
+                "https://sites.google.com/view/cluck-checker/home"
         }
     }
 }
@@ -48,10 +57,8 @@ struct SettingsMainView: View {
     
     /// Переменные для WebView
     @State private var showWebView = false
-    @State private var webViewURL: URL?
     @State private var webViewType: WebViewType = .aboutDeveloper
     
-    private let privacyPolicyURL = URL(string: "https://apple.com")
     private let aboutDeveloperURL = URL(string: "https://google.com")
     
     var body: some View {
@@ -118,7 +125,6 @@ struct SettingsMainView: View {
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 20).fill(.customBraun))
                     .onTapGesture {
-                        webViewURL = privacyPolicyURL
                         webViewType = .privacyPolicy
                         showWebView = true
                     }
@@ -135,7 +141,6 @@ struct SettingsMainView: View {
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 20).fill(.customBraun))
                     .onTapGesture {
-                        webViewURL = aboutDeveloperURL
                         webViewType = .aboutDeveloper
                         showWebView = true
                     }
@@ -158,7 +163,7 @@ struct SettingsMainView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationDestination(isPresented: $showWebView) {
-                    if let url = webViewURL {
+                    if let url = URL(string: webViewType.urlString) {
                         WebViewScreen(url: url, type: webViewType)
                             .onAppear { tabbarService.isTabbarVisible = false }
                             .onDisappear { tabbarService.isTabbarVisible = true }
